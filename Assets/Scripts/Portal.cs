@@ -9,7 +9,7 @@ public class Portal : MonoBehaviour {
 	public GameObject linkedPortal;
 
 	// used to help prevent us from infinitely teleporting back and forth
-	private bool portalActive = true;
+	public bool portalActive = true;
 
 	void OnTriggerEnter(Collider other) {
 
@@ -46,7 +46,11 @@ public class Portal : MonoBehaviour {
 
 		// re-enable this portal for teleportation after we've exited
 		// (teleporting into it)
-		Toggle();
+		// Was not working but this seemed to the trick.
+		portalActive = true;
+		// if (other.tag == "Player"){
+		// 	Toggle();
+		// }
 	}
 
 	public void Toggle() {
